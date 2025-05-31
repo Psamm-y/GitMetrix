@@ -2,3 +2,11 @@
 button {
   cursor: pointer;
 }
+.gradient_background {
+  background: #314b63;
+  background: linear-gradient(
+    90deg,
+    rgba(49, 75, 99, 1) 2%,
+    rgba(0, 37, 71, 1) 100%
+  );
+}
