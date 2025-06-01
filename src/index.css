@@ -2,6 +2,10 @@
 button {
   cursor: pointer;
 }
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+}
 .gradient_background {
   background: #314b63;
   background: linear-gradient(
