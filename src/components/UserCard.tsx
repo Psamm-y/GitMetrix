@@ -14,25 +14,38 @@ const UserCard = ({ username }: UserCardProps) => {
   })
   const [loading, setLoading] = useState<boolean>(false);
   const GITHUB_API = import.meta.env.VITE_GITHUB_API;
+  const [contributions, setContributions] = useState<number | null>(null);
+  const BACKEND_API = import.meta.env.VITE_BACKEND_API;
+ 
   useEffect(() => {
     if (!username) return;
       setLoading(true);
 
-      fetch(`${GITHUB_API}/${username}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUser({
-            name: data.name,
-            login: data.login,
-            avatar_url: data.avatar_url,
-            followers: data.followers,
-            public_repos: data.public_repos
-          });
-          setLoading(false);
-        })
-        .catch((err) => {
-      console.error("Oops", err);
-      setLoading(false);
+    fetch(`${GITHUB_API}/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUser({
+          name: data.name,
+          login: data.login,
+          avatar_url: data.avatar_url,
+          followers: data.followers,
+          public_repos: data.public_repos
+        });
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Oops", err);
+        setLoading(false);
+      });
+    fetch(`${BACKEND_API}/contributions/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setContributions(
+          data.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? 0
+        )
+      }).catch((err) => {
+        console.error("Contributions error", err);
+        setContributions(null);
     })
    
   }, [username])
@@ -53,19 +66,19 @@ const UserCard = ({ username }: UserCardProps) => {
           </div>
         <div className="text-white">
           <p className="text-center ">{user?.name}</p>
-          <p className="text-center text-gray-500">{user?.login} </p>
+          <p className="text-center text-gray-400">{user?.login} </p>
         </div>
         <div className="text-white flex justify-between">
+          <div className="border-r-1 border-white pr-2">
+            <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white">{user?.public_repos}</span> <br /> repositories</p>
+          </div> 
           <div className="">
-            <p className="text-center text-sm "><span className="text-2xl font-medium">{user?.public_repos}</span> <br /> repositories</p>
-          </div>
-          <div className="">
-            <p className="text-center text-sm">
-              <span className="text-2xl font-medium">{user.followers}</span><br /> followers
+            <p className="text-center text-sm text-gray-200">
+              <span className="text-2xl font-medium text-white">{user.followers}</span><br /> followers
             </p>
           </div>
-          <div className="">
-            <p className="text-center text-sm"><span className="text-2xl font-medium">693</span><br /> contributions</p>
+          <div className="border-l-1 border-white pl-2">
+                <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white">{contributions}</span><br /> contributions</p>
           </div>
 
         </div>

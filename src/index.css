@@ -4,7 +4,7 @@
   --font-Raleway: 'Raleway';
 }
 body {
-  background: url('../public/Github-Pattern.png');
+  background: url('/Github-Pattern.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
