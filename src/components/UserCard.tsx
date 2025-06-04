@@ -36,10 +36,7 @@ const UserCard = ({ username }: UserCardProps) => {
     })
    
   }, [username])
-  const patternCount = 12;
-  const patternImages = Array.from({ length: patternCount });
-  const [randomTop] = useState(() => Math.floor(Math.random() * 10));
-  const [randomLeft] = useState(() => Math.floor(Math.random() * 10));
+  
   return (
     <section className="min-h-[100dvh] flex justify-center items-center font-Raleway relative">
 
@@ -47,11 +44,11 @@ const UserCard = ({ username }: UserCardProps) => {
       <div className="flex justify-center items-center "> <p className="text-xl text-green-400 "><span className="animate-spin"><AiOutlineLoading/></span> Retrieving Info </p></div>
       ) :
         
-        (<div className="h-130 w-90 backdrop-blur-2xl  p-1 relative gradient_background border-1.1 rounded-lg" >
+        (<div className="h-130 w-90 backdrop-blur-2xl  p-1 relative gradient_background shadow-black shadow-2xl rounded-lg" >
          
-          <div className="bg-white/0.5 p-4 h-full w-full rounded-lg" >
+          <div className="bg-white/0.5 p-4 h-full w-full rounded-lg " >
          {/* <div className=" left-0 right-0 before:-top-4 before:bottom-0 bg-white before:absolute w-full h-full"></div> */}
-        <div className="h-40 w-full flex justify-center items-center ">
+        <div className="h-30 w-full flex justify-center items-center ">
           {user.avatar_url ? (<img src={user.avatar_url} alt="" className="w-25 h-25 object-cover rounded-full border-[0.1em] border-white " />) : null}
           </div>
         <div className="text-white">
