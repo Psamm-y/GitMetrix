@@ -2,8 +2,9 @@ import {useState } from "react"
 import type { FormData } from "../utils/FormData";
 import UserCard from "./UserCard";
 
+
 const InputPage = () => {
-  const [showCards, setShowCards] = useState(false);
+   const [showCards, setShowCards] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     username1: "",
     username2:""
@@ -41,11 +42,11 @@ const InputPage = () => {
      
       </div>}
    
-      {showCards ? (
+       {showCards ? (
         <div className="min-h-[100dvh] flex items-center justify-center">
         <div className="flex gap-6">
-          <UserCard username={formData.username1} />
-          <UserCard username={formData.username2} />
+          <UserCard username={formData?.username1} />
+          <UserCard username={formData?.username2} />
         </div>
         </div>
       ):""}
