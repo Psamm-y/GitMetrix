@@ -1,4 +1,4 @@
-import {useState } from "react"
+import {useState} from "react"
 import type { FormData } from "../utils/FormData";
 import UserCard from "./UserCard";
 
@@ -15,6 +15,7 @@ const InputPage = () => {
   }
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     if (formData.username1 && formData.username2) {
       setShowCards(true);
     }
@@ -24,7 +25,7 @@ const InputPage = () => {
   return (
     <>
       {!showCards &&  <div className="flex items-center justify-center min-h-[100dvh]">
-      <div className="h-[30rem]">
+      <div className="h-[30rem] backdrop-blur-xl p-4 rounded-2xl" >
         <form className="" onSubmit={handleSubmit}>
           <h1 className="text-blue-500 text-2xl font-bold mb-20 text-center">GitHub User Comparison</h1>
           <em>Enter the exact github usernames of the two geeks</em>
@@ -44,9 +45,11 @@ const InputPage = () => {
    
        {showCards ? (
         <div className="min-h-[100dvh] flex items-center justify-center">
-        <div className="flex gap-6">
+          <div className="flex gap-6">
+            
           <UserCard username={formData?.username1} />
-          <UserCard username={formData?.username2} />
+              <UserCard username={formData?.username2} />
+              
         </div>
         </div>
       ):""}

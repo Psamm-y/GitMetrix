@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { AiOutlineLoading } from "react-icons/ai";
 import type { GitHubUser } from "../utils/GitHubUser"
 interface UserCardProps {
   username: string
@@ -11,39 +12,55 @@ const UserCard = ({ username }: UserCardProps) => {
     public_repos: 0,
     followers: 0
   })
+  const [loading, setLoading] = useState<boolean>(false);
   const GITHUB_API = import.meta.env.VITE_GITHUB_API;
   useEffect(() => {
-    if (!username) return
-    try {
+    if (!username) return;
+      setLoading(true);
+
       fetch(`${GITHUB_API}/${username}`)
         .then((res) => res.json())
-        .then((data) => setUser({
-          name: data.name,
-          login: data.login,
-          avatar_url: data.avatar_url,
-          followers: data.followers,
-          public_repos: data.public_repos
-        }));
-
-    } catch (err) {
-      console.log("Oops", err);
-    }
+        .then((data) => {
+          setUser({
+            name: data.name,
+            login: data.login,
+            avatar_url: data.avatar_url,
+            followers: data.followers,
+            public_repos: data.public_repos
+          });
+          setLoading(false);
+        })
+        .catch((err) => {
+      console.error("Oops", err);
+      setLoading(false);
+    })
+   
   }, [username])
+  const patternCount = 12;
+  const patternImages = Array.from({ length: patternCount });
+  const [randomTop] = useState(() => Math.floor(Math.random() * 10));
+  const [randomLeft] = useState(() => Math.floor(Math.random() * 10));
   return (
-    <section className="min-h-[100dvh] flex justify-center items-center">
-      <div className="h-130 w-90 bg-blue/[.2]  p-4 relative">
-        {/* <div className=" left-[50%] before:top-0 before:bottom-0 bg-white absolute w-1 h-full"></div> */}
-        <div className="h-40 w-full flex justify-center items-center ">
-          {user.avatar_url ? (<img src={user.avatar_url} alt="" className="w-25 h-25 object-cover rounded-full" />) : null}
+    <section className="min-h-[100dvh] flex justify-center items-center font-Raleway relative">
 
-        </div>
+      {loading ? (
+      <div className="flex justify-center items-center "> <p className="text-xl text-green-400 "><span className="animate-spin"><AiOutlineLoading/></span> Retrieving Info </p></div>
+      ) :
+        
+        (<div className="h-130 w-90 backdrop-blur-2xl  p-1 relative gradient_background border-1.1 rounded-lg" >
+         
+          <div className="bg-white/0.5 p-4 h-full w-full rounded-lg" >
+         {/* <div className=" left-0 right-0 before:-top-4 before:bottom-0 bg-white before:absolute w-full h-full"></div> */}
+        <div className="h-40 w-full flex justify-center items-center ">
+          {user.avatar_url ? (<img src={user.avatar_url} alt="" className="w-25 h-25 object-cover rounded-full border-[0.1em] border-white " />) : null}
+          </div>
         <div className="text-white">
           <p className="text-center ">{user?.name}</p>
           <p className="text-center text-gray-500">{user?.login} </p>
         </div>
         <div className="text-white flex justify-between">
           <div className="">
-            <p className="text-center text-sm"><span className="text-2xl font-medium">{user?.public_repos}</span> <br /> repositories</p>
+            <p className="text-center text-sm "><span className="text-2xl font-medium">{user?.public_repos}</span> <br /> repositories</p>
           </div>
           <div className="">
             <p className="text-center text-sm">
@@ -55,7 +72,8 @@ const UserCard = ({ username }: UserCardProps) => {
           </div>
 
         </div>
-      </div>
+        </div>
+        </div>)}
 
     </section>
   )

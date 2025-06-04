@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+@theme {
+  --font-Raleway: 'Raleway';
+}
+body {
+  background: url('../public/Github-Pattern.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 button {
   cursor: pointer;
 }
@@ -7,10 +16,14 @@ input:-webkit-autofill {
   -webkit-text-fill-color: black !important;
 }
 .gradient_background {
-  background: #314b63;
-  background: linear-gradient(
-    90deg,
-    rgba(49, 75, 99, 1) 2%,
-    rgba(0, 37, 71, 1) 100%
-  );
+  background: #007dfa;
+  /* background: linear-gradient(
+    180deg,
+    rgba(0, 125, 250, 0.451) 0%,
+    rgba(0, 37, 71, 0.702) 100%
+  ); */
+  background: linear-gradient(45deg, #132541 50%, #e87a64 120%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(0, 37, 71, 0.702);
 }
