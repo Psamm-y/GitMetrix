@@ -15,5 +15,8 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.19.8"
   }
 }

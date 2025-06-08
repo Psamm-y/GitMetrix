@@ -27,3 +27,10 @@ input:-webkit-autofill {
   -webkit-backdrop-filter: blur(20px);
   border-color: rgba(0, 37, 71, 0.702);
 }
+.highlighted {
+  color: #007dfa;
+  font-size: 2rem;
+}
+.no-pointer {
+  pointer-events: none;
+}

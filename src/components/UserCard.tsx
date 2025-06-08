@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { AiOutlineLoading } from "react-icons/ai";
-import type { GitHubUser } from "../utils/GitHubUser"
+import type { GitHubUser } from "../utils/GitHubUser";
+import CountUp from 'react-countup'
 interface UserCardProps {
   username: string
 }
@@ -52,7 +53,7 @@ const UserCard = ({ username }: UserCardProps) => {
   
   return (
     <section className="min-h-[100dvh] flex justify-center items-center font-Raleway relative">
-
+    
       {loading ? (
       <div className="flex justify-center items-center "> <p className="text-xl text-green-400 "><span className="animate-spin"><AiOutlineLoading/></span> Retrieving Info </p></div>
       ) :
@@ -69,16 +70,18 @@ const UserCard = ({ username }: UserCardProps) => {
           <p className="text-center text-gray-400">{user?.login} </p>
         </div>
         <div className="text-white flex justify-between">
-          <div className="border-r-1 border-white pr-2">
-            <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white">{user?.public_repos}</span> <br /> repositories</p>
+          <div className=" pr-2">
+                <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white">
+                  <CountUp start={0} end={user?.public_repos ?? 0} duration={5} />  
+                </span> <br /> repositories</p>
           </div> 
           <div className="">
             <p className="text-center text-sm text-gray-200">
-              <span className="text-2xl font-medium text-white">{user.followers}</span><br /> followers
+              <span className="text-2xl font-medium text-white"> <CountUp start={0} end=  {user.followers ?? 0} duration={5} /></span><br /> followers
             </p>
           </div>
-          <div className="border-l-1 border-white pl-2">
-                <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white">{contributions}</span><br /> contributions</p>
+          <div className="pl-2">
+                <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white"> <CountUp start={0} end={contributions ?? 0} duration={10} /> </span><br /> contributions</p>
           </div>
 
         </div>
