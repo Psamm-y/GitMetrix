@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "clsx": "^2.1.1",
     "framer-motion": "^12.16.0",
+    "gsap": "^3.13.0",
     "matter-js": "^0.20.0",
     "motion": "^12.16.0",
     "react": "^19.1.0",

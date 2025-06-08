@@ -1,15 +1,17 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type { FormData } from "../utils/FormData";
 import UserCard from "./UserCard";
 import { FaGithub } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdArrowBackIos } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
-import FallingText from "../ui/FallingText";
+import { FaCrosshairs } from "react-icons/fa6";
+
 
 
 const InputPage = () => {
   const [showCards, setShowCards] = useState(false);
+  const formRef = useRef(null);
   const [formData, setFormData] = useState<FormData>({
     username1: "",
     username2: ""
@@ -41,7 +43,8 @@ const InputPage = () => {
           transition={{ duration: 0.2 }}
           className="flex items-center justify-center min-h-[100dvh]"
         >
-          <div className="h-[30rem] backdrop-blur-xl p-4 rounded-2xl border-1 border-gray-500" >
+            <div ref={formRef} className="h-[30rem] backdrop-blur-xl p-4 rounded-2xl border-1 border-gray-500" >
+              
             <form className="" onSubmit={handleSubmit}>
               <h1 className="text-blue-500 text-2xl font-bold mb-20 text-center font-Raleway">GitMetrix</h1>
               <em>Enter the exact github usernames of the two geeks</em>
@@ -56,8 +59,8 @@ const InputPage = () => {
                 <button onClick={()=>setFormData((prevFormData)=>({...prevFormData,"username2":""}))} className="h-full hover:block text-gray-400 hidden peer-hover:block absolute top-[50%] -translate-y-[50%] right-1 transition duration-75"><IoIosCloseCircle /></button>
 
               </div>
-              <div className="w-full text-center">
-                <button type="submit" className="bg-blue-500 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none shadow-black">Compare</button>
+              <div className="w-full flex justify-center">
+                <button type="submit" className="bg-blue-500 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none shadow-black flex items-center" ><FaCrosshairs/> Compare</button>
               </div>
             </form>
           </div>
