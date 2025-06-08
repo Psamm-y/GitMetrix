@@ -15,6 +15,7 @@ const InputPage = () => {
     username2: ""
   })
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }))
   }
@@ -29,9 +30,9 @@ const InputPage = () => {
 
   return (
     <>
-{!showCards &&      <FallingText className="no-pointer" text={`GitMetrix is a platform where users can view and compare their github stats and even download them`} highlightWords={["view", "compare", "stat","download"]} fontSize="1.5rem" trigger={"auto"} />
-}    <AnimatePresence mode="wait">
-      {!showCards ? (
+{/* {!showCards &&      <FallingText className="" text={`GitMetrix is a platform where users can view and compare their github stats and even download them`} highlightWords={["view", "compare", "stat","download"]} fontSize="1.5rem" trigger={"auto"} />}    */}
+      <AnimatePresence mode="wait">
+        {!showCards ? (
         <motion.div
           key="input"
           initial={{ opacity: 0, x: -100 }}
@@ -52,7 +53,7 @@ const InputPage = () => {
               <div className="h-10 w-90 border-2 border-black mb-4 relative rounded-lg pl-2">
                 <span className="absolute top-[50%] -translate-y-[50%] "><FaGithub /></span>
                 <input required className="peer w-[95%] h-full outline-none p-2 rounded-lg pl-5" type="text" name="username2" placeholder="Enter Github username of second user" value={formData.username2} onChange={handleFormChange} />
-                <button onClick={()=>setFormData((prevFormData)=>({...prevFormData,"username1":""}))} className="h-full hover:block text-gray-400 hidden peer-hover:block absolute top-[50%] -translate-y-[50%] right-1 transition duration-75"><IoIosCloseCircle /></button>
+                <button onClick={()=>setFormData((prevFormData)=>({...prevFormData,"username2":""}))} className="h-full hover:block text-gray-400 hidden peer-hover:block absolute top-[50%] -translate-y-[50%] right-1 transition duration-75"><IoIosCloseCircle /></button>
 
               </div>
               <div className="w-full text-center">

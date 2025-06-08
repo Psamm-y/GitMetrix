@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { AiOutlineLoading } from "react-icons/ai";
 import type { GitHubUser } from "../utils/GitHubUser";
 import CountUp from 'react-countup'
+import { FaUser } from "react-icons/fa6";
 interface UserCardProps {
   username: string
 }
@@ -63,7 +64,7 @@ const UserCard = ({ username }: UserCardProps) => {
           <div className="bg-white/0.5 p-4 h-full w-full rounded-lg " >
          {/* <div className=" left-0 right-0 before:-top-4 before:bottom-0 bg-white before:absolute w-full h-full"></div> */}
         <div className="h-30 w-full flex justify-center items-center ">
-          {user.avatar_url ? (<img src={user.avatar_url} alt="" className="w-25 h-25 object-cover rounded-full border-[0.1em] border-white " />) : null}
+          {user.avatar_url ? (<img src={user.avatar_url} alt="" className="w-25 h-25 object-cover rounded-full border-[0.1em] border-white " />) : <FaUser className="text-white bg-black p-1 w-25 h-25 object-cover rounded-full border-[0.1em] border-white "/>}
           </div>
         <div className="text-white">
           <p className="text-center ">{user?.name}</p>
@@ -84,7 +85,8 @@ const UserCard = ({ username }: UserCardProps) => {
                 <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white"> <CountUp start={0} end={contributions ?? 0} duration={10} /> </span><br /> contributions</p>
           </div>
 
-        </div>
+            </div>
+            
         </div>
         </div>)}
 

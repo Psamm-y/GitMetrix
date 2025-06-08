@@ -38,7 +38,7 @@ const FallingText: React.FC<FallingTextProps> = ({
         const isHighlighted = highlightWords.some((hw) => word.startsWith(hw));
         return `<span
           class="inline-block mx-[2px] select-none ${
-            isHighlighted ? "text-cyan-500 font-bold" : ""
+            isHighlighted ? "text-blue-500 font-bold" : ""
           }"
         >
           ${word}
@@ -53,7 +53,7 @@ const FallingText: React.FC<FallingTextProps> = ({
     if (trigger === "auto") {
       setEffectStarted(true);
       return;
-    }
+    } 
     if (trigger === "scroll" && containerRef.current) {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -225,7 +225,7 @@ const FallingText: React.FC<FallingTextProps> = ({
   return (
     <div
       ref={containerRef}
-      className="absolute -z-[1] top-0 bottom-0 left-0 right-0 cursor-pointer text-center pt-8 overflow-hidden"
+      className="absolute -z-[1] top-100 bottom-0 left-0 right-0 cursor-pointer text-center pt-8 overflow-hidden"
       onClick={trigger === "click" ? handleTrigger : undefined}
       onMouseEnter={trigger === "hover" ? handleTrigger : undefined}
     >
