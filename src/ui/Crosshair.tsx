@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, RefObject } from "react";
+import React, { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import { gsap } from "gsap";
 
 const lerp = (a: number, b: number, n: number): number => (1 - n) * a + n * b;
@@ -20,7 +21,7 @@ const getMousePos = (
 
 interface CrosshairProps {
   color?: string;
-  containerRef?: RefObject<HTMLElement>;
+  containerRef: RefObject<HTMLDivElement | null>;
 }
 
 const Crosshair: React.FC<CrosshairProps> = ({

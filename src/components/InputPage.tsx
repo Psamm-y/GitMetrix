@@ -6,12 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MdArrowBackIos } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import { FaCrosshairs } from "react-icons/fa6";
+import Crosshair from "../ui/Crosshair";
 
 
 
 const InputPage = () => {
   const [showCards, setShowCards] = useState(false);
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLDivElement |null>(null);
   const [formData, setFormData] = useState<FormData>({
     username1: "",
     username2: ""
@@ -44,7 +45,7 @@ const InputPage = () => {
           className="flex items-center justify-center min-h-[100dvh]"
         >
             <div ref={formRef} className="h-[30rem] backdrop-blur-xl p-4 rounded-2xl border-1 border-gray-500" >
-              
+              <Crosshair containerRef={formRef} color="gray"/>
             <form className="" onSubmit={handleSubmit}>
               <h1 className="text-blue-500 text-2xl font-bold mb-20 text-center font-Raleway">GitMetrix</h1>
               <em>Enter the exact github usernames of the two geeks</em>

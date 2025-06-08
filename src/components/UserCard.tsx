@@ -56,7 +56,7 @@ const UserCard = ({ username }: UserCardProps) => {
     <section className="min-h-[100dvh] flex justify-center items-center font-Raleway relative">
     
       {loading ? (
-      <div className="flex justify-center items-center "> <p className="text-xl text-green-400 "><span className="animate-spin"><AiOutlineLoading/></span> Retrieving Info </p></div>
+      <div className="flex justify-center items-center "> <p className="text-xl text-blue-500 "><span className="animate-spin"><AiOutlineLoading/></span> Retrieving Info </p></div>
       ) :
         
         (<div className="h-130 w-90 backdrop-blur-2xl  p-1 relative gradient_background shadow-black shadow-2xl rounded-lg" >
@@ -78,7 +78,7 @@ const UserCard = ({ username }: UserCardProps) => {
           </div> 
           <div className="">
             <p className="text-center text-sm text-gray-200">
-              <span className="text-2xl font-medium text-white"> <CountUp start={0} end=  {user.followers ?? 0} duration={5} /></span><br /> followers
+              <span className="text-2xl font-medium text-white"> <CountUp start={0} end=  {user.followers ??  0} duration={5} /></span><br /> followers
             </p>
           </div>
           <div className="pl-2">
