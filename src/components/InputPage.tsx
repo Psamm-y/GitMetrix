@@ -12,7 +12,8 @@ import Crosshair from "../ui/Crosshair";
 
 const InputPage = () => {
   const [showCards, setShowCards] = useState(false);
-  const formRef = useRef<HTMLDivElement |null>(null);
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const [hovered, sethovered] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     username1: "",
     username2: ""
@@ -45,7 +46,7 @@ const InputPage = () => {
           className="flex items-center justify-center min-h-[100dvh]"
         >
             <div ref={formRef} className="h-[30rem] backdrop-blur-xl p-4 rounded-2xl border-1 border-gray-500" >
-              <Crosshair containerRef={formRef} color="gray"/>
+              <Crosshair containerRef={formRef} color={`${hovered ? "#2b7fff": "#bbbbbb53"}`} />
             <form className="" onSubmit={handleSubmit}>
               <h1 className="text-blue-500 text-2xl font-bold mb-20 text-center font-Raleway">GitMetrix</h1>
               <em>Enter the exact github usernames of the two geeks</em>
@@ -61,7 +62,7 @@ const InputPage = () => {
 
               </div>
               <div className="w-full flex justify-center">
-                <button type="submit" className="bg-blue-500 gap-1 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none shadow-black flex items-center" ><FaCrosshairs/> Compare</button>
+                <button type="submit" className="bg-blue-500 gap-1 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none shadow-black flex items-center" onMouseOver={()=>sethovered(true)} onMouseOut={()=>sethovered(false)}><FaCrosshairs/> Compare</button>
               </div>
             </form>
           </div>
