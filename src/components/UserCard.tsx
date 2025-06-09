@@ -84,12 +84,18 @@ const UserCard = ({ username }: UserCardProps) => {
           <div className="pl-2">
                 <p className="text-center text-sm text-gray-200"><span className="text-2xl font-medium text-white"> <CountUp start={0} end={contributions ?? 0} duration={10} /> </span><br /> contributions</p>
           </div>
-
             </div>
-           <div className="grid grid-cols-3 grid-auto-rows-[5rem]">
-              <div className="border-blue-500 border-1"></div>
-              <div></div>
-              <div></div>
+           <div className="grid grid-cols-4 grid-rows-[3.5rem_3rem] gap-1 mt-2">
+              <div className="border-blue-500 border-1 row-span-2 rounded-lg p-1 ">
+                <div className="border-1 border-blue-500 w-full h-full rounded-lg"></div>
+              </div>
+              <div className="border-1 border-blue-500 col-span-2 rounded-lg p-1">
+              <div className="border-1 border-blue-500 w-full h-full rounded-lg"></div>
+              </div>
+              <div className="border-1 border-blue-500 col-span-3 rounded-lg p-1">
+              <div className="border-1 border-blue-500 w-full h-full rounded-lg"></div>
+
+              </div>
             </div> 
         </div>
         </div>)}

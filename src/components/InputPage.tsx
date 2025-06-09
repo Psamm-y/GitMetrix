@@ -62,7 +62,7 @@ const InputPage = () => {
 
               </div>
               <div className="w-full flex justify-center">
-                <button type="submit" className="bg-blue-500 gap-1 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none shadow-black flex items-center" onMouseOver={()=>sethovered(true)} onMouseOut={()=>sethovered(false)}><FaCrosshairs/> Compare</button>
+                <button type="submit" className="bg-blue-500 gap-1 text-white px-10 py-2 rounded-full mt-4 shadow-xs hover:bg-blue-400 active:shadow-none hover:scale-[1.1] transition duration-200 shadow-black flex items-center" onMouseOver={()=>sethovered(true)} onMouseOut={()=>sethovered(false)}><FaCrosshairs/> Compare</button>
               </div>
             </form>
           </div>
