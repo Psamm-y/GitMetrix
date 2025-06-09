@@ -86,11 +86,11 @@ const UserCard = ({ username }: UserCardProps) => {
           </div>
 
             </div>
-            {/* <div className="grid grid-cols-[40%_4em_4em] grid-rows-[4em_2em]">
+           <div className="grid grid-cols-3 grid-auto-rows-[5rem]">
               <div className="border-blue-500 border-1"></div>
               <div></div>
               <div></div>
-            </div> */}
+            </div> 
         </div>
         </div>)}
 
